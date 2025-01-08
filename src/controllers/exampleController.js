@@ -2,7 +2,7 @@ const db = require("../models/db");
 
 exports.getAllExamples = async (req, res) => {
   try {
-    const result = await db.query("SELECT * FROM examples");
+    const result = await db.query("SELECT * FROM users");
     res.status(200).json(result.rows);
   } catch (error) {
     console.error(error);
