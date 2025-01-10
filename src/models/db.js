@@ -8,9 +8,9 @@ const pool = new Pool({
 
 (async () => {
   try {
-    const result = await pool.query("SELECT * from users"); // Test query to check connection
+    // const result = await pool.query("SELECT * from users"); // Test query to check connection
     console.log("Database connected successfully");
-    console.log("Query result:", result.rows);
+    // console.log("Query result:", result.rows);
   } catch (error) {
     console.error("Database connection failed:", error);
   }

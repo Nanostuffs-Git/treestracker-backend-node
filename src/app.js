@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const exampleRoutes = require("./routes/exampleRoutes");
 const loginRoutes = require("./routes/loginRoutes");
 const myTreesRoutes = require("./routes/myTreesRoutes");
+const myQrCodesRoutes = require("./routes/myQrCodesRoutes");
 
 require("dotenv").config(); // Load environment variables
 
@@ -16,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/examples", exampleRoutes);
 app.use("/api/login", loginRoutes);
 app.use("/api/trees", myTreesRoutes);
+app.use("/api/qrcode", myQrCodesRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
