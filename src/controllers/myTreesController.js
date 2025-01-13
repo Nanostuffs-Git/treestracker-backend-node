@@ -9,16 +9,17 @@ exports.getTreeByUsername = async (req, res) => {
 
     try {
         const query = `
-      SELECT ts.* 
+      SELECT ts.*, qc.qrcode_id
       FROM tree_surveys ts
-      JOIN users u ON ts.created_by = u.user_id
+      JOIN qr_codes qc ON ts.tree_id = qc.tree_id
+      JOIN users u ON qc.user_id = u.user_id
       WHERE u.username = $1
     `;
         const values = [username];
         const result = await db.query(query, values);
 
         if (result?.rows?.length === 0) {
-            return res.status(404).json({ message: 'No tree surveys found for this user.' });
+            return res.status(404).json({ message: 'No tree surveys found for this user with a QR code attached.' });
         }
 
         return res.status(200).json(result.rows);
