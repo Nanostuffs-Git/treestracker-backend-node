@@ -30,6 +30,8 @@ exports.login = async (req, res) => {
             username: user.username,
             mobileNo: user.mobile_no,
             email: user.email,
+            firstname: user?.firstname,
+            lastname: user?.lastname,
         };
 
         // Send success response
